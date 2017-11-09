@@ -9,7 +9,7 @@ public class DevideExpressionTest {
     private static final double FIRST_NUMBER = 10.4;
     private static final double SECOND_NUMBER = 20.3;
     private static final double MULTIPLY_RESULT = FIRST_NUMBER/SECOND_NUMBER;
-    private DevideExpression expression;
+    private DivideExpression expression;
     private Expression left;
     private Expression right;
 
@@ -17,7 +17,7 @@ public class DevideExpressionTest {
     public void initBeforeClass(){
         left = new NumberExpression(FIRST_NUMBER);
         right = new NumberExpression(SECOND_NUMBER);
-        expression = new DevideExpression(left,right);
+        expression = new DivideExpression(left,right);
     }
 
 

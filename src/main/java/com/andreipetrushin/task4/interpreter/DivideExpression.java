@@ -1,11 +1,11 @@
 package com.andreipetrushin.task4.interpreter;
 
-public class DevideExpression implements Expression{
+public class DivideExpression implements Expression{
 
     private Expression left;
     private Expression right;
 
-    public DevideExpression(Expression left, Expression right) {
+    public DivideExpression(Expression left, Expression right) {
         this.left = left;
         this.right = right;
     }
