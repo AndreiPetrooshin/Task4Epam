@@ -1,4 +1,4 @@
-package com.andreipetrushin.task4.interpreter;
+package com.andreipetrushin.task4.service.interpreter;
 
 public class MinusExpression implements Expression {
 

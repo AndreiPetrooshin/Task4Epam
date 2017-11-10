@@ -25,15 +25,15 @@ public class TextCompositeTest {
                 new ParagraphEntity(" It is a long established fact that a reader"));
         paragraphCompositeThird = new ParagraphComposite(
                 new ParagraphEntity("Some text"));
-        composite.push(paragraphCompositeFirst);
-        composite.push(paragraphCompositeSecond);
+        composite.add(paragraphCompositeFirst);
+        composite.add(paragraphCompositeSecond);
     }
 
     @Test
     public void shouldReturnAndRemoveLastElement(){
-        Component result = composite.pop();
+        Component result = composite.get();
         Assert.assertEquals(paragraphCompositeSecond, result);
-        Component secondResult = composite.pop();
+        Component secondResult = composite.get();
         Assert.assertEquals(paragraphCompositeFirst, secondResult);
 
     }
@@ -41,15 +41,15 @@ public class TextCompositeTest {
     @Test
     public void shouldRemoveElementAndReturnTrueIfSuccess(){
         boolean result = composite.remove(paragraphCompositeSecond);
-        Component secondResult  = composite.pop();
+        Component secondResult  = composite.get();
         Assert.assertEquals(true,result);
         Assert.assertEquals(paragraphCompositeFirst,secondResult);
     }
 
     @Test
     public void shouldAddElementToList(){
-        composite.push(paragraphCompositeThird);
-        Component result= composite.pop();
+        composite.add(paragraphCompositeThird);
+        Component result= composite.get();
         Assert.assertEquals(paragraphCompositeThird, result);
     }
 

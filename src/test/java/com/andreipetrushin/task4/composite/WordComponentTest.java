@@ -8,13 +8,13 @@ public class WordComponentTest {
 
     @Test(expected = UnsupportedOperationException.class)
     public void shouldThrowUnsuporrtedOperationExceptionWhenCallPop(){
-        component.pop();
+        component.get();
     }
 
     @Test(expected = UnsupportedOperationException.class)
     public void shouldThrowUnsuporrtedOperationExceptionWhenCallPush(){
 
-        component.push(component);
+        component.add(component);
     }
 
     @Test(expected = UnsupportedOperationException.class)

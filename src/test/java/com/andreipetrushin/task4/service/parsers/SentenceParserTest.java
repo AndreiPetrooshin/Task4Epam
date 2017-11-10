@@ -1,7 +1,6 @@
-package com.andreipetrushin.task4.parsers;
+package com.andreipetrushin.task4.service.parsers;
 
 import com.andreipetrushin.task4.composite.Component;
-import com.andreipetrushin.task4.composite.ExpressionComponent;
 import com.andreipetrushin.task4.composite.ParagraphComposite;
 import com.andreipetrushin.task4.composite.SentenceComposite;
 import com.andreipetrushin.task4.entity.ExpressionEntity;
@@ -43,6 +42,6 @@ public class SentenceParserTest {
     @Test
     public void shouldParseSentenceCompositeIntoWords(){
         Component result =  sentenceParser.parse(paragraphComposite);
-        Assert.assertEquals(sentenceComposite, result.pop());
+        Assert.assertEquals(sentenceComposite, result.get());
     }
 }

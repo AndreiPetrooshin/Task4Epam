@@ -1,4 +1,4 @@
-package com.andreipetrushin.task4.interpreter;
+package com.andreipetrushin.task4.service.interpreter;
 
 import org.junit.Assert;
 import org.junit.Test;

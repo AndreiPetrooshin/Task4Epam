@@ -26,15 +26,15 @@ public class SentenceCompositeTest {
                 new WordEntity("reader"));
         expressionComponent = new ExpressionComponent(
                 new ExpressionEntity("6+9*(3-4)"));
-        composite.push(wordComponentFirst);
-        composite.push(wordComponentSecond);
+        composite.add(wordComponentFirst);
+        composite.add(wordComponentSecond);
     }
 
     @Test
     public void shouldReturnAndRemoveLastElement(){
-        Component result = composite.pop();
+        Component result = composite.get();
         Assert.assertEquals(wordComponentSecond, result);
-        Component secondResult = composite.pop();
+        Component secondResult = composite.get();
         Assert.assertEquals(wordComponentFirst, secondResult);
 
     }
@@ -42,15 +42,15 @@ public class SentenceCompositeTest {
     @Test
     public void shouldRemoveElementAndReturnTrueIfSuccess(){
         boolean result = composite.remove(wordComponentSecond);
-        Component secondResult  = composite.pop();
+        Component secondResult  = composite.get();
         Assert.assertEquals(true,result);
         Assert.assertEquals(wordComponentFirst,secondResult);
     }
 
     @Test
     public void shouldAddElementToList(){
-        composite.push(expressionComponent);
-        Component result= composite.pop();
+        composite.add(expressionComponent);
+        Component result= composite.get();
         Assert.assertEquals(expressionComponent, result);
     }
 

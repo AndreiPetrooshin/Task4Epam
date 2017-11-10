@@ -4,11 +4,9 @@ package com.andreipetrushin.task4.composite;
 
 public interface Component {
 
-    String getEntityContent();
+    Component get(int i);
 
-    Component pop();
-
-    void push(Component component);
+    void add(Component component);
 
     boolean remove(Component component);
 

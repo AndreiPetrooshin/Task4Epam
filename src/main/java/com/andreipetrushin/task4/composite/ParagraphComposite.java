@@ -1,52 +1,25 @@
 package com.andreipetrushin.task4.composite;
 
-import com.andreipetrushin.task4.entity.ParagraphEntity;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ParagraphComposite implements Component {
 
-    private ParagraphEntity entity;
-    private LinkedList<Component> components = new LinkedList<>();
+   private List<Component> components = new ArrayList<>();
 
-    public ParagraphComposite(ParagraphEntity entity) {
-        this.entity = entity;
+
+    public Component get(int i){
+        return components.get(i);
     }
 
-    public ParagraphComposite() {
-    }
-
-    public Component pop(){
-        return  components.pop();
-    }
-
-    public void push(Component component){
-        components.push(component);
+    public void add(Component component){
+        components.add(component);
     }
 
     public boolean remove(Component component){
         return  components.remove(component);
     }
 
-    public String getEntityContent() {
-        return entity.getContext();
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ParagraphComposite that = (ParagraphComposite) o;
-
-        if (entity != null ? !entity.equals(that.entity) : that.entity != null) return false;
-        return components != null ? components.equals(that.components) : that.components == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = entity != null ? entity.hashCode() : 0;
-        result = 31 * result + (components != null ? components.hashCode() : 0);
-        return result;
-    }
 }

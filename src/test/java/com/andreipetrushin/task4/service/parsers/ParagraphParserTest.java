@@ -1,4 +1,4 @@
-package com.andreipetrushin.task4.parsers;
+package com.andreipetrushin.task4.service.parsers;
 
 import com.andreipetrushin.task4.composite.*;
 import com.andreipetrushin.task4.entity.ParagraphEntity;
@@ -46,7 +46,7 @@ public class ParagraphParserTest {
     @Test
     public void shouldParseSentenceCompositeIntoWords(){
         Component result =  paragraphParser.parse(textComposite);
-        Assert.assertEquals(paragraphComposite, result.pop());
+        Assert.assertEquals(paragraphComposite, result.get());
     }
 
 }

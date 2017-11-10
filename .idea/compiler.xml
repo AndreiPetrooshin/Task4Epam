@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.7">
-      <module name="parser4task" target="1.7" />
+      <module name="parser4task" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
