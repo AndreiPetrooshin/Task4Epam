@@ -1,18 +1,12 @@
 package com.andreipetrushin.task4.service.interpreter;
 
-public class DivideExpression implements Expression{
+public class DivideExpression extends AbstractExpression {
 
-    private Expression left;
-    private Expression right;
-
-    public DivideExpression(Expression left, Expression right) {
-        this.left = left;
-        this.right = right;
-    }
 
     @Override
-    public double interpret() {
-        return left.interpret()/ right.interpret();
-
+    public void interpret(Context context) {
+        Double firstValue = context.popValue();
+        Double secondValue = context.popValue();
+        context.pushValue((secondValue / firstValue));
     }
 }

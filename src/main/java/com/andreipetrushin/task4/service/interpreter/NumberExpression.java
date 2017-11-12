@@ -1,6 +1,6 @@
 package com.andreipetrushin.task4.service.interpreter;
 
-public class NumberExpression implements Expression {
+public class NumberExpression extends AbstractExpression {
 
     private double number;
 
@@ -8,8 +8,9 @@ public class NumberExpression implements Expression {
         this.number = number;
     }
 
+
     @Override
-    public double interpret() {
-        return number;
+    public void interpret(Context context) {
+        context.pushValue(number);
     }
 }

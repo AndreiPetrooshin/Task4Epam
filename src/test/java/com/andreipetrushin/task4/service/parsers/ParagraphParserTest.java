@@ -1,52 +1,37 @@
 package com.andreipetrushin.task4.service.parsers;
 
-import com.andreipetrushin.task4.composite.*;
-import com.andreipetrushin.task4.entity.ParagraphEntity;
-import com.andreipetrushin.task4.entity.TextEntity;
+
+import com.andreipetrushin.task4.entity.Component;
+import com.andreipetrushin.task4.entity.Composite;
+import com.andreipetrushin.task4.entity.SimpleComponent;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class ParagraphParserTest {
 
-    public static final String TEXT = "It has survived - not only (five) centuries, but also the leap into 13+ i--\n" +
-            "electronic typesetting, remaining 3+5 essentially 6+9*(3-4) unchanged. It was\n" +
-            "popularised in the 5*(1*2*(3*(4*(5- --j +4)-3)-2)-1 with the release of Letraset sheets\n" +
-            "containing Lorem Ipsum passages, and more recently with desktop publishing software\n" +
-            "like Aldus PageMaker including version of Loren Ipsum.\n" +
-            "\n" +
-            "    It is a long established fact that a reader will be distracted by the readable\n" +
-            "content of a page when looking at its layout. The point of using (71-(2*i--*(3*(2-1/2(*2)-\n" +
-            "2)-10/2))*++i Ipsum is that it has a more-or-less normal distribution letters, as\n" +
-            "opposed to using (Content here), content here', making it look like readable English.";
-    public static final String TEXT_RESULT = "It is a long established fact that a reader will be distracted by the readable\n" +
-            "content of a page when looking at its layout. The point of using (71-(2*i--*(3*(2-1/2(*2)-\n" +
-            "2)-10/2))*++i Ipsum is that it has a more-or-less normal distribution letters, as\n" +
-            "opposed to using (Content here), content here', making it look like readable English.";
-
-    private ParagraphParser paragraphParser;
-    private TextComposite textComposite;
-    private TextEntity textEntity;
-    private ParagraphComposite paragraphComposite;
-    private ParagraphEntity paragraphEntity;
+    private static final String TEXT = "Someone said.\n" + "Two big 42+236+++j cars.\n" + "\nBye";
+    private static final ParagraphParser parser= new ParagraphParser();
+    private static final List<String> EXPECTED = Arrays.asList("Someone said.", "Two big 42+236+++j cars.", "Bye");
 
 
-    @Before
-    public void initBeforeCallMethod(){
-        paragraphParser = new ParagraphParser();
-
-        textEntity = new TextEntity(TEXT);
-        textComposite = new TextComposite(textEntity);
-
-        paragraphEntity = new ParagraphEntity(TEXT_RESULT);
-        paragraphComposite = new ParagraphComposite(paragraphEntity);
-
+    @Test
+    public void shouldParseTextToParagraphsAndReturnList() {
+        List<String> result = parser.parse(TEXT);
+        Assert.assertEquals(EXPECTED, result);
     }
 
     @Test
-    public void shouldParseSentenceCompositeIntoWords(){
-        Component result =  paragraphParser.parse(textComposite);
-        Assert.assertEquals(paragraphComposite, result.get());
-    }
+    public void shouldReturnCorrectComposite(){
+       Component result = parser.handleRequest(TEXT);
+       Component expectedComponent = new Composite();
+        for(String value: EXPECTED){
+            SimpleComponent component = new SimpleComponent(value);
+            expectedComponent.add(component);
+        }
+        Assert.assertEquals(expectedComponent,result);
 
+    }
 }

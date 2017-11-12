@@ -1,6 +1,5 @@
 package com.andreipetrushin.task4.service.parsers;
 
-
 import com.andreipetrushin.task4.entity.Component;
 import com.andreipetrushin.task4.entity.Composite;
 import com.andreipetrushin.task4.entity.SimpleComponent;
@@ -10,16 +9,16 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class SentenceParserTest {
+public class TerminalParserTEst {
 
-    private static final SentenceParser parser = new SentenceParser();
     private static final List<String> EXPECTED  = Arrays.asList(
-            "Leap 13+i-- typesetting.", "Remaining 3+5, essentially 6+9*(3-4).", "Bye.");
-    public static final String TEXT = "Leap 13+i-- typesetting. Remaining 3+5, essentially 6+9*(3-4). Bye.";
+            "Leap", "13 9 +", "Remaining","essentially", "20 19 -", "Bye.");
+    private static final String TEXT = "Leap 13 i-- + Remaining essentially 20 j-- - Bye.";
+    private static final TerminalParser parser = new TerminalParser(10,20);
 
 
     @Test
-    public void shouldParseParagraphsToSentences(){
+    public void shouldParseSentenceToTerminal(){
         List<String> result = parser.parse(TEXT);
         Assert.assertEquals(EXPECTED, result);
 

@@ -1,31 +1,22 @@
 package com.andreipetrushin.task4.service.parsers;
 
 
-import com.andreipetrushin.task4.composite.Component;
-import com.andreipetrushin.task4.composite.ParagraphComposite;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 
 public class ParagraphParser extends AbstractParser{
 
-    private SentenceParser sentenceParser= new SentenceParser();
 
     @Override
-    public Component handleRequest(String text, int j, int i) {
-
-        List<String> list = parse(text,i,j);
-
-        ParagraphComposite composite = new ParagraphComposite();
-        Component sentenceComposite;
-        for (int k = 0; k < list.size(); k++) {
-            String value = list.get(k);
-            sentenceComposite = sentenceParser.handleRequest(value,i,j);
-            composite.add(sentenceComposite);
+    protected List<String> parse(String text) {
+        List<String> list = new ArrayList<>();
+        Matcher matcher = PARAGRAPH_SPLITTER.matcher(text);
+        while(matcher.find()){
+            String value = matcher.group().trim();
+            list.add(value);
         }
-        return composite;
-    }
-
-    @Override
-    protected List<String> parse(String text, int j, int i) {
-        return null;
+        return list;
     }
 }

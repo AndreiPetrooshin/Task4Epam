@@ -9,26 +9,27 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Parameterized.class)
-public class NumberExpressionTest {
+public class PlusExpressionTest {
 
     @Parameterized.Parameters
     public static Collection data(){
         return Arrays.asList(new Object[][]{
-                {10,10},
-                {1600.100,1600.100},
-                {-100,-100},
-                {-5.5,-5.5},
-                {0,0},
+            {5.2,3,8.2},
+            {1422.1,3231.4,4653.5},
+            {-100.5,300,199.5},
+            {-5,0,-5},
+            {0,5,5},
         });
     }
 
-    private static NumberExpression numberExpression;
+    private PlusExpression plusExpression = new PlusExpression();
     private Context context;
     private double expected;
 
-    public NumberExpressionTest(double number, double expected) {
+    public PlusExpressionTest(double firstNumber, double secondNumber, double expected) {
         this.context = new Context();
-        numberExpression = new NumberExpression(number);
+        context.pushValue(firstNumber);
+        context.pushValue(secondNumber);
         this.expected = expected;
 
 
@@ -36,8 +37,8 @@ public class NumberExpressionTest {
     }
 
     @Test
-    public void shouldReturnCorrectNumber(){
-        numberExpression.interpret(context);
+    public void shouldAddTheFirstNumberToSecondAndReturnResult(){
+        plusExpression.interpret(context);
         double result = context.popValue();
         Assert.assertEquals(expected,result,0.01);
 
