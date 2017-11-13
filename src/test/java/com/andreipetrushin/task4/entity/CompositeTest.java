@@ -1,6 +1,8 @@
 package com.andreipetrushin.task4.entity;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,6 +17,7 @@ public class CompositeTest {
 
     private static final int ID = 1;
     private static final Component EXPECTED = new SimpleComponent("text");
+    private static final Logger LOGGER  = LogManager.getLogger(CompositeTest.class);
     private Component composite;
     private List<Component> expectedList;
 
@@ -29,6 +32,7 @@ public class CompositeTest {
 
     public CompositeTest(Component c1, Component c2, Component c3) {
         composite = new Composite();
+        LOGGER.info("Coming components: c1 - {}, c2 - {}, c3 - {}", c1,c2,c3);
         composite.add(c1);
         composite.add(c2);
         composite.add(c3);

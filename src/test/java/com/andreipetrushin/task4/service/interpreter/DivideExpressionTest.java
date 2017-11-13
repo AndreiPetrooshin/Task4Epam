@@ -1,5 +1,7 @@
 package com.andreipetrushin.task4.service.interpreter;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +12,11 @@ import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class DivideExpressionTest {
+
+    private static final Logger LOGGER = LogManager.getLogger(DivideExpressionTest.class);
+    private static DivideExpression divideExpression = new DivideExpression();
+    private Context context;
+    private double expected;
 
     @Parameterized.Parameters
     public static Collection data(){
@@ -25,11 +32,10 @@ public class DivideExpressionTest {
         });
     }
 
-    private static DivideExpression divideExpression = new DivideExpression();
-    private Context context;
-    private double expected;
 
     public DivideExpressionTest (double firstNumber, double secondNumber, double expected) {
+        LOGGER.info("Coming values: firstNumber - {}, secondNumber - {}, expected - {}"
+                ,firstNumber,secondNumber,expected);
         this.context = new Context();
         context.pushValue(firstNumber);
         context.pushValue(secondNumber);

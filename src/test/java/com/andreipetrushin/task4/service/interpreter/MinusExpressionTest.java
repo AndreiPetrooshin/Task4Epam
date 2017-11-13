@@ -1,5 +1,7 @@
 package com.andreipetrushin.task4.service.interpreter;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +12,8 @@ import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class MinusExpressionTest {
+
+    private static final Logger LOGGER = LogManager.getLogger(MinusExpressionTest.class);
 
     @Parameterized.Parameters
     public static Collection data(){
@@ -27,6 +31,8 @@ public class MinusExpressionTest {
     private double expected;
 
     public MinusExpressionTest(double firstNumber, double secondNumber, double expected) {
+        LOGGER.info("Coming values: firstNumber - {}, secondNumber - {}, expected - {}"
+                ,firstNumber,secondNumber,expected);
         this.context = new Context();
         context.pushValue(firstNumber);
         context.pushValue(secondNumber);

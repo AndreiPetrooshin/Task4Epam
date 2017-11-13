@@ -2,16 +2,19 @@ package com.andreipetrushin.task4.service;
 
 import com.andreipetrushin.task4.entity.Component;
 import com.andreipetrushin.task4.service.interpreter.ParseExpression;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.regex.Pattern;
 
 public class ServiceRestorer {
 
-    static final Pattern EXPRESSION_SPLITTER = Pattern.compile("([-* ]+[+\\d\\-*/]+[-+*/\\d ]+)+");
+    private static final Pattern EXPRESSION_SPLITTER = Pattern.compile("([-* ]+[+\\d\\-*/]+[-+*/\\d ]+)+");
+    private static final Logger LOGGER = LogManager.getLogger(ServiceRestorer.class);
 
-    public static StringBuilder restore(Component component){
+    public static StringBuilder restore(Component component) {
+        LOGGER.info("Coming component: {}", component);
         StringBuilder builder = new StringBuilder();
         List<Component> paragraphList = component.getAll();
         for(Component paragraph: paragraphList){
@@ -31,6 +34,7 @@ public class ServiceRestorer {
                 builder.append('\n');
             }
         }
+        LOGGER.info("The String from component after restore: {}", builder);
         return builder;
     }
 

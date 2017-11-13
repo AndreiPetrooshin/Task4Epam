@@ -1,5 +1,7 @@
 package com.andreipetrushin.task4.service.interpreter;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +12,10 @@ import java.util.Collection;
 
 @RunWith(Parameterized.class)
 public class ParseExpressionTest {
+
+    private static final Logger LOGGER  = LogManager.getLogger(ParseExpressionTest.class);
+    private ParseExpression parseExpression;
+    private double expected;
 
     @Parameterized.Parameters
     public static Collection data(){
@@ -27,10 +33,9 @@ public class ParseExpressionTest {
         });
     }
 
-    private ParseExpression parseExpression;
-    private double expected;
 
     public ParseExpressionTest(String expression, double expected) {
+            LOGGER.info("Coming values: expression - {}, expected value: {}", expression,expected);
             parseExpression = new ParseExpression(expression);
             this.expected = expected;
 

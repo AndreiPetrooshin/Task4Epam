@@ -1,5 +1,7 @@
 package com.andreipetrushin.task4.service.interpreter;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +12,12 @@ import java.util.*;
 @RunWith(Parameterized.class)
 public class ContextTest {
 
+    private static final Logger LOGGER = LogManager.getLogger(ContextTest.class);
+
+    private Context context;
+    private List<Double> expectedList;
+
+
     @Parameterized.Parameters
     public static Collection data(){
         return Arrays.asList(new Object[][]{
@@ -19,11 +27,10 @@ public class ContextTest {
         });
     }
 
-    private Context context;
-    private List<Double> expectedList;
-    private List<Double> resultList;
 
     public ContextTest(double n1, double n2, double n3, double n4, double n5) {
+        LOGGER.info("Coming values: n1 - {}, n2 - {}, n3 -{}, n4 - {}, n5 - {}"
+                ,n1,n2,n3,n4,n5);
         this.context = new Context();
         context.pushValue(n1);
         context.pushValue(n2);
@@ -38,12 +45,12 @@ public class ContextTest {
 
     @Test
     public void shouldReturnCorrectCountOfNumbersAndValues(){
-        resultList = new ArrayList<>();
+        List<Double> resultList = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             resultList.add(context.popValue());
         }
         Collections.reverse(resultList);
-        Assert.assertEquals(expectedList,resultList);
+        Assert.assertEquals(expectedList, resultList);
 
     }
 

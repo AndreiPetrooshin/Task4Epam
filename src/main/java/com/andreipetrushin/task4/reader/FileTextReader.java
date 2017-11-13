@@ -1,5 +1,8 @@
 package com.andreipetrushin.task4.reader;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -7,9 +10,11 @@ import java.io.IOException;
 
 public class FileTextReader {
 
+    private static final Logger LOGGER = LogManager.getLogger(FileTextReader.class);
+
     public static String read(String path) throws IOException {
         StringBuilder builder = new StringBuilder();
-
+        LOGGER.info("Coming path - {}",path);
         try(BufferedReader reader = new BufferedReader(new FileReader(path))) {
 
         while(reader.ready()){
@@ -18,6 +23,7 @@ public class FileTextReader {
 
             }
         }
+        LOGGER.info("Read text: {}", builder);
         return builder.toString();
     }
 
