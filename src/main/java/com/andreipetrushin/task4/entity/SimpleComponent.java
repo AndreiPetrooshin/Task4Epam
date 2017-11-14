@@ -41,7 +41,7 @@ public class SimpleComponent implements Component {
 
     @Override
     public String getValue() {
-        LOGGER.info("Getting the value - {}", value);
+
         return value;
     }
 
