@@ -14,7 +14,7 @@ public class DivideExpression extends AbstractExpression {
         Double firstValue = context.popValue();
         Double secondValue = context.popValue();
         context.pushValue((secondValue / firstValue));
-        LOGGER.info("Context object after execution: {}", context);
+        LOGGER.debug("Context object after execution: {}", context);
     }
 
     @Override

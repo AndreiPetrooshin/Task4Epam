@@ -34,7 +34,7 @@ public class ServiceRestorer {
                 builder.append('\n');
             }
         }
-        LOGGER.info("The String from component after restore: {}", builder);
+        LOGGER.debug("The String from component after restore: {}", builder);
         return builder;
     }
 

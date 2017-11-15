@@ -7,7 +7,7 @@ public class ServiceIndividualTasks {
 
 
     //INDIVIDUAL TASK №1
-    public static int countSentencesWithSameWords(Component component) {
+    public int countSentencesWithSameWords(Component component) {
         int counter = 0;
         List<String> words;
         List<Component> sentenceList = getSentenceListFromComponent(component);
@@ -27,7 +27,7 @@ public class ServiceIndividualTasks {
     }
 
     //INDIVIDUAL TASK №2
-    public static void printSentencesOrderByCountOfLexemes(Component component) {
+    public void printSentencesOrderByCountOfLexemes(Component component) {
         List<Component> sentenceList = getSentenceListFromComponent(component);
         List<List<Component>> orderedList = new ArrayList<>();
         for (Component sentence : sentenceList) {
@@ -43,13 +43,13 @@ public class ServiceIndividualTasks {
             for (Component lexeme : sentence) {
                 System.out.print(lexeme.getValue() + " ");
             }
-            System.out.println();
+            System.out.print('\n');
         }
 
     }
 
     //INDIVIDUAL TASK №3
-    public static void changeFirstWordWithLast(Component component) {
+    public void changeFirstWordWithLast(Component component) {
         List<Component> sentenceList = getSentenceListFromComponent(component);
         for (Component sentence : sentenceList) {
             List<Component> words = sentence.getAll();
@@ -67,7 +67,7 @@ public class ServiceIndividualTasks {
     }
 
     //INDIVIDUAL TASK №4
-    public static void printLexemesOrderedByAlphabet(Component component) {
+    public void printLexemesOrderedByAlphabet(Component component) {
         List<Component> components = getSentenceListFromComponent(component);
         TreeSet<String> sortWords = new TreeSet<>();
         for (Component sentence : components) {
@@ -85,7 +85,7 @@ public class ServiceIndividualTasks {
             char firstCharNextValue = nextValue.charAt(0);
             System.out.print(value + " ");
             if (firstCharNextValue != firstCharValue) {
-                System.out.println();
+                System.out.print('\n');
             }
             value = nextValue;
         }
@@ -94,7 +94,7 @@ public class ServiceIndividualTasks {
     }
 
     //INDIVIDUAL TASK №5
-    public static void printWordsByNumberOfEntry(Component component, List<String> searchWords) {
+    public void printWordsByNumberOfEntry(Component component, List<String> searchWords) {
         List<Component> sentenceList = getSentenceListFromComponent(component);
         List<String> wordList = new ArrayList<>();
         for (Component sentence : sentenceList) {
@@ -117,13 +117,13 @@ public class ServiceIndividualTasks {
     }
 
     //INDIVIDUAL TASK №6
-    public static void deleteLexemesByCharAndSize(Component component, char firstChar, int size) {
+    public void deleteLexemesByCharAndSize(Component component, char firstChar, int size) {
         List<Component> sentenceList = getSentenceListFromComponent(component);
         for (Component sentence : sentenceList) {
             List<Component> wordList = sentence.getAll();
             for (int i = 0; i < wordList.size(); i++) {
                 Component word = wordList.get(i);
-                String value = word.getValue();
+                String value = word.getValue().replaceAll("\\pP","");
                 char ch = value.charAt(0);
                 if (value.length() == size && firstChar == ch) {
                     wordList.remove(word);
@@ -134,7 +134,7 @@ public class ServiceIndividualTasks {
     }
 
     //INDIVIDUAL TASK №7
-    public static void sortLexemesByEntryOfSymbol(Component component, char symbol) {
+    public void sortLexemesByEntryOfSymbol(Component component, char symbol) {
         List<Component> sentencesList = getSentenceListFromComponent(component);
         List<String> listWords = new ArrayList<>();
         for (Component sentence : sentencesList) {
@@ -165,7 +165,7 @@ public class ServiceIndividualTasks {
 
 
 
-    private static List<String> replaceAllPunctuations(List<Component> component) {
+    private List<String> replaceAllPunctuations(List<Component> component) {
         List<String> words = new ArrayList<>();
         for (Component word : component) {
             String value = word.getValue();
@@ -178,7 +178,7 @@ public class ServiceIndividualTasks {
         return words;
     }
 
-    private static List<Component> getSentenceListFromComponent(Component component) {
+    private List<Component> getSentenceListFromComponent(Component component) {
         List<Component> paragraphList = component.getAll();
         List<Component> sentenceList = new ArrayList<>();
         for (Component paragraph : paragraphList) {
@@ -189,7 +189,7 @@ public class ServiceIndividualTasks {
 
     }
 
-    private static <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
+    private <K, V extends Comparable<? super V>> Map<K, V> sortByValue(Map<K, V> map) {
         List<Map.Entry<K, V>> list = new LinkedList<>(map.entrySet());
         Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
             @Override
@@ -207,7 +207,7 @@ public class ServiceIndividualTasks {
         return result;
     }
 
-    private static <K, V extends Comparable<? super V>> Map<K, V> sortByValueReverse(Map<K, V> map) {
+    private <K, V extends Comparable<? super V>> Map<K, V> sortByValueReverse(Map<K, V> map) {
         List<Map.Entry<K, V>> list = new LinkedList<>(map.entrySet());
         Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
             @Override

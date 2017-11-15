@@ -13,24 +13,23 @@ public class Composite  implements Component{
 
     @Override
     public Component get(int id) {
-        LOGGER.info("Component list: {}", list);
         Component component = list.get(id);
-        LOGGER.info("Get Component by id - {}, component: {}", id, component);
+        LOGGER.debug("Get Component by id - {}, component: {}", id, component);
         return component;
     }
 
     @Override
     public void add(Component component) {
-            LOGGER.info("Adding the component: {}; to list: {}", component,list);
+            LOGGER.debug("Adding the component: {}; to list: {}", component,list);
             list.add(component);
-            LOGGER.info("List after adding: {}", list);
+            LOGGER.debug("List after adding: {}", list);
     }
 
     @Override
     public boolean remove(Component component) {
-        LOGGER.info("Removing the component: {}; from list: {}", component,list);
+        LOGGER.debug("Removing the component: {}; from list: {}", component,list);
         boolean value = list.remove(component);
-        LOGGER.info("List after removing: {}", list);
+        LOGGER.debug("List after removing: {}", list);
         return value;
     }
 

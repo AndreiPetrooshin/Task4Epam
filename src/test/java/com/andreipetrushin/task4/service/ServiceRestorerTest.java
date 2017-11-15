@@ -25,7 +25,7 @@ public class ServiceRestorerTest {
     }
 
     private static final StringBuilder EXPECTED = new StringBuilder("It has survived - not only (five) centuries, but also the leap into 17.0 electronic typesetting. " +
-            "\nIt is a -600.0 established fact.\n");
+            "\nIt is a -1200.0 established fact.\n");
 
     @Test
     public void shouldParseTextAndReturnCompositeWithCalculatedText(){

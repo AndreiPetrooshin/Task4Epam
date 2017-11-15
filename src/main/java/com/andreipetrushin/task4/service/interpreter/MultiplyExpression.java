@@ -13,7 +13,7 @@ public class MultiplyExpression extends AbstractExpression {
         Double firstValue = context.popValue();
         Double secondValue = context.popValue();
         context.pushValue(firstValue * secondValue);
-        LOGGER.info("Context object after execution: {}", context);
+        LOGGER.debug("Context object after execution: {}", context);
     }
 
     @Override

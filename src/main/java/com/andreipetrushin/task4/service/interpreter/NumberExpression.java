@@ -18,7 +18,7 @@ public class NumberExpression extends AbstractExpression {
     public void interpret(Context context) {
         LOGGER.info("Coming context object:  {}", context);
         context.pushValue(number);
-        LOGGER.info("Context object after execution: {}", context);
+        LOGGER.debug("Context object after execution: {}", context);
     }
 
     @Override

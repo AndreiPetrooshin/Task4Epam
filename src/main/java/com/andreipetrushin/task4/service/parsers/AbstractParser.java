@@ -37,7 +37,7 @@ public abstract class AbstractParser {
             if(successor!=null){
                 LOGGER.info("Calling handleRequest() in our successor - {}", successor);
                 Component component = successor.handleRequest(value);
-                LOGGER.info("Adding component: {} to out composite: {}", component,composite);
+                LOGGER.info("Adding component: {} to our composite: {}", component,composite);
                 composite.add(component);
                 LOGGER.info("After adding component to composite: {}",composite);
             } else {

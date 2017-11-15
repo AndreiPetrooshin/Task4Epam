@@ -13,16 +13,14 @@ public class Context {
     private Deque<Double> deque = new LinkedList<>();
 
     public Double popValue() {
-        LOGGER.info("Before pop: {}", deque);
         double value = deque.pop();
-        LOGGER.info("After pop, value: " + value + " : {}", deque);
+        LOGGER.debug("Pop value: " + value + " : {}", deque);
         return value;
     }
 
     public void pushValue(Double value) {
-        LOGGER.info("Pushing the value: "+ value + " to {}", deque);
         this.deque.push(value);
-        LOGGER.info("After pushing: {}", deque);
+        LOGGER.debug("Push value - {} to deque: {}", value,deque);
     }
 
     @Override

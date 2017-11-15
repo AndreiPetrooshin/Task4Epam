@@ -26,25 +26,25 @@ public class ParseExpression {
             switch (temp) {
                 case '+':
                     list.add(new PlusExpression());
-                    LOGGER.info("Adding PlusExpression to our list: {} ", list);
+                    LOGGER.debug("Adding PlusExpression to our list: {} ", list);
                     break;
                 case '-':
                     list.add(new MinusExpression());
-                    LOGGER.info("Adding MinusExpression to our list: {} ", list);
+                    LOGGER.debug("Adding MinusExpression to our list: {} ", list);
                     break;
                 case '/':
                     list.add(new DivideExpression());
-                    LOGGER.info("Adding DivideExpression to our list: {} ", list);
+                    LOGGER.debug("Adding DivideExpression to our list: {} ", list);
                     break;
                 case '*':
                     list.add(new MultiplyExpression());
-                    LOGGER.info("Adding MultiplyExpression to our list: {} ", list);
+                    LOGGER.debug("Adding MultiplyExpression to our list: {} ", list);
                     break;
                 default:
                     Scanner scanner = new Scanner(lexeme);
                     if (scanner.hasNextInt()) {
                         list.add(new NumberExpression(scanner.nextInt()));
-                        LOGGER.info("Adding NumberExpression to our list: {} ", list);
+                        LOGGER.debug("Adding NumberExpression to our list: {} ", list);
                     }
             }
         }

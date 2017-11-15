@@ -29,7 +29,7 @@ public class TerminalParser extends AbstractParser {
         while (matcher.find()){
             String value = matcher.group().trim();
             list.add(value);
-            LOGGER.info("Getting the value - \"{}\"; from text and adding to list: {}", value,list);
+            LOGGER.debug("Getting the value - \"{}\"; from text and adding to list: {}", value,list);
         }
         return list;
     }

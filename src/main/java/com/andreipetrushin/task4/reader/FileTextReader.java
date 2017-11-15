@@ -14,7 +14,7 @@ public class FileTextReader {
 
     public static String read(String path) throws IOException {
         StringBuilder builder = new StringBuilder();
-        LOGGER.info("Coming path - {}",path);
+        LOGGER.debug("Coming path - {}",path);
         try(BufferedReader reader = new BufferedReader(new FileReader(path))) {
 
         while(reader.ready()){
@@ -23,7 +23,7 @@ public class FileTextReader {
 
             }
         }
-        LOGGER.info("Read text: {}", builder);
+        LOGGER.debug("Read text: {}", builder);
         return builder.toString();
     }
 
